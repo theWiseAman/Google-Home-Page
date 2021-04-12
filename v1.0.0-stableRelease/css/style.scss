@@ -1,0 +1,374 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+body {
+  display: grid;
+  grid-template-rows: 48px calc(100% - 68px - 93.6px) 93.6px;
+  font-family: sans-serif;
+  min-height: 100vh;
+  grid-row-gap: 10px;
+  a {
+    text-decoration: none;
+  }
+  li {
+    list-style-type: none;
+    display: inline;
+  }
+
+  .navBar {
+    grid-area: 1/1/2/2;
+    padding: 1em;
+    height: 48px;
+    display: grid;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 13px;
+
+    ul {
+      li {
+        margin: 7px;
+        position: relative;
+      }
+      .right {
+        margin-right: 30px;
+      }
+      .moreApps {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+        margin-right: 10px;
+        cursor: pointer;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        border: none;
+        background-color: white;
+        z-index: 2;
+      }
+      .moreApps:hover {
+        background-color: lightgrey;
+      }
+      .moreApps:focus {
+        outline: none;
+      }
+      img {
+        width: 24px;
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+        align-items: center;
+        justify-content: center;
+
+        .modalContent {
+          background-color: white;
+          z-index: 10;
+          border-radius: 10px;
+          box-shadow: 2px 2px 2px rgb(226, 226, 226),
+            2px -2px 2px rgb(226, 226, 226), -2px 2px 2px rgb(226, 226, 226),
+            -2px -2px 2px rgb(226, 226, 226);
+          width: 320px;
+          height: 450px;
+          max-width: 80%;
+          max-height: 80%;
+          padding: 10px;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-rows: 1fr 1fr auto;
+          justify-content: center;
+          z-index: 2;
+          position: fixed;
+          top: 60px;
+          right: 15px;
+          overflow: scroll;
+          overflow-x: hidden;
+          animation: modalopen;
+          animation-duration: 0.1ss;
+
+          button {
+            grid-area: 3/1/4/4;
+            width: max-content;
+            padding: 10px 20px;
+            margin-top: 0px;
+            margin-bottom: 20px;
+            margin-left: 80px;
+            background-color: white;
+            color: rgb(82, 82, 255);
+            border: lightgrey solid 1px;
+          }
+          button:hover {
+            background-color: rgb(231, 249, 255);
+            border: rgb(186, 186, 255) solid 1px;
+          }
+          button:focus {
+            outline: none;
+            transition: 100ms ease-in-out;
+            background-color: rgb(209, 209, 255);
+            box-shadow: 0px 2px 2px rgb(235, 235, 235),
+              2px 0px 2px rgb(235, 235, 235), 2px 0px 2px rgb(235, 235, 235);
+          }
+          .top {
+            grid-area: 1/1/2/4;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-bottom: lightgrey solid 1px;
+          }
+          .bottom {
+            grid-area: 2/1/3/4;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+          }
+          div {
+            grid-column-gap: 20px;
+            grid-row-gap: 20px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            a {
+              padding: 10px;
+              width: 80px;
+              height: 80px;
+              border-radius: 4px;
+
+              img {
+                width: 40px;
+                height: 40px;
+              }
+            }
+            a:hover {
+              background-color: rgb(209, 220, 255);
+            }
+          }
+        }
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+          background: white;
+        }
+        ::-webkit-scrollbar-thumb {
+          border-radius: 6px;
+          padding: 3px;
+          background: rgb(206, 206, 206);
+        }
+      }
+      a {
+        color: black;
+        button {
+          margin-left: 10px;
+          cursor: pointer;
+          background-color: rgb(86, 86, 255);
+          border: none;
+          border-radius: 5px;
+          padding: 5px 10px;
+          width: 96px;
+          height: 36px;
+          color: white;
+          font-weight: 500;
+          font-size: 14px;
+        }
+        button:hover {
+          background-color: rgb(0, 157, 255);
+        }
+        button:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+  section {
+    grid-area: 2/1/3/2;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+    [alt="Google logo"] {
+      height: 90px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 10px;
+    }
+    form {
+      #searchBox {
+        border: rgb(190, 190, 190) solid 1px;
+        padding: 5px;
+        border-radius: 50vh;
+        display: grid;
+        grid-template-columns: calc(100% - 16.8px - 10px) 16.8px;
+        margin-bottom: 10px;
+        height: 44px;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 90vw;
+
+        label {
+          grid-area: 1/1/2/2;
+          height: 40px;
+
+          img {
+            height: 20px;
+            opacity: 0.4;
+            position: absolute;
+            top: 11px;
+            left: 10px;
+          }
+          input {
+            border: none;
+            width: calc(100% - 40.8px);
+            align-self: center;
+            padding: auto;
+            height: 32px;
+            width: calc(100% - 80px);
+            position: absolute;
+            left: 40px;
+            font-size: 16px;
+          }
+          input:focus {
+            outline: none;
+          }
+        }
+
+        #voiceSearch {
+          height: 24px;
+          grid-area: 1/2/2/3;
+          position: absolute;
+          top: 3px;
+        }
+      }
+      .button {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 10px;
+        margin-top: 1em;
+        margin-bottom: 1em;
+
+        button {
+          border: none;
+          border-radius: 4px;
+          padding: 5px 10px;
+          height: 36px;
+          background-color: rgb(247, 247, 247);
+          font-size: 14px;
+          color: rgb(49, 49, 49);
+          cursor: pointer;
+        }
+        button:hover {
+          border: lightgrey solid 1px;
+          box-shadow: 0px 1px 1px lightgrey;
+        }
+        button:focus {
+          outline: none;
+          border: rgb(81, 81, 255) solid 1px;
+        }
+        #b1 {
+          justify-self: flex-end;
+        }
+        #b2 {
+          justify-self: flex-start;
+        }
+      }
+    }
+    ul {
+      font-size: 13px;
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 90vw;
+
+      li {
+        padding: 5px;
+        a {
+          color: rgb(0, 0, 179);
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  footer {
+    grid-area: 3/1/4/2;
+    background-color: rgb(243, 242, 242);
+    color: rgb(117, 117, 117);
+
+    div {
+      height: 46.8px;
+      padding: 1em;
+    }
+    #f1 {
+      border-bottom: solid rgb(212, 211, 211) 1px;
+      font-size: 15px;
+      padding-left: 2em;
+    }
+    #f2 {
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: space-between;
+      font-size: 14px;
+
+      ul {
+        li {
+          padding: 15px;
+          a {
+            color: rgb(117, 117, 117);
+          }
+          a:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media all and (max-width: 700px) {
+  body {
+    grid-template-rows: 48px calc(100% - 68px - 140.4px) 140.4px;
+    footer {
+      #f2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 46.8px 46.8px;
+        ul {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: 400px) {
+  body {
+    footer {
+      #f1 {
+        font-size: 13px;
+      }
+      #f2 {
+        font-size: 12px;
+        ul {
+          li {
+            padding: 8px;
+          }
+        }
+      }
+    }
+  }
+}

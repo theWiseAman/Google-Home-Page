@@ -1,0 +1,496 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 48px calc(100% - 68px - 93.6px) 93.6px;
+      grid-template-rows: 48px calc(100% - 68px - 93.6px) 93.6px;
+  font-family: sans-serif;
+  min-height: 100vh;
+  grid-row-gap: 10px;
+}
+
+body li a {
+  text-decoration: none;
+}
+
+body li {
+  list-style-type: none;
+  display: inline;
+}
+
+body .navBar {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-area: 1/1/2/2;
+  padding: 1em;
+  height: 48px;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 13px;
+}
+
+body .navBar ul li {
+  margin: 7px;
+  position: relative;
+}
+
+body .navBar ul .right {
+  margin-right: 30px;
+}
+
+body .navBar ul .moreApps {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  margin-right: 10px;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: white;
+  z-index: 2;
+}
+
+body .navBar ul .moreApps:hover {
+  background-color: lightgrey;
+}
+
+body .navBar ul .moreApps:focus {
+  outline: none;
+}
+
+body .navBar ul img {
+  width: 24px;
+}
+
+body .navBar ul .modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .navBar ul .modal .modalContent {
+  background-color: white;
+  z-index: 10;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 2px #e2e2e2, 2px -2px 2px #e2e2e2, -2px 2px 2px #e2e2e2, -2px -2px 2px #e2e2e2;
+          box-shadow: 2px 2px 2px #e2e2e2, 2px -2px 2px #e2e2e2, -2px 2px 2px #e2e2e2, -2px -2px 2px #e2e2e2;
+  width: 320px;
+  height: 450px;
+  max-width: 80%;
+  max-height: 80%;
+  padding: 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr auto;
+      grid-template-rows: 1fr 1fr auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 2;
+  position: fixed;
+  top: 60px;
+  right: 15px;
+  overflow: scroll;
+  overflow-x: hidden;
+  -webkit-animation: modalopen;
+          animation: modalopen;
+  -webkit-animation-duration: 0.1ss;
+          animation-duration: 0.1ss;
+}
+
+body .navBar ul .modal .modalContent button {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: 3/1/4/4;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 10px 20px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  margin-left: 80px;
+  background-color: white;
+  color: #5252ff;
+  border: lightgrey solid 1px;
+}
+
+body .navBar ul .modal .modalContent button:hover {
+  background-color: #e7f9ff;
+  border: #babaff solid 1px;
+}
+
+body .navBar ul .modal .modalContent button:focus {
+  outline: none;
+  -webkit-transition: 100ms ease-in-out;
+  transition: 100ms ease-in-out;
+  background-color: #d1d1ff;
+  -webkit-box-shadow: 0px 2px 2px #ebebeb, 2px 0px 2px #ebebeb, 2px 0px 2px #ebebeb;
+          box-shadow: 0px 2px 2px #ebebeb, 2px 0px 2px #ebebeb, 2px 0px 2px #ebebeb;
+}
+
+body .navBar ul .modal .modalContent .top {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: 1/1/2/4;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: lightgrey solid 1px;
+}
+
+body .navBar ul .modal .modalContent .bottom {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: 2/1/3/4;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+}
+
+body .navBar ul .modal .modalContent div {
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+body .navBar ul .modal .modalContent div a {
+  padding: 10px;
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+}
+
+body .navBar ul .modal .modalContent div a img {
+  width: 40px;
+  height: 40px;
+}
+
+body .navBar ul .modal .modalContent div a:hover {
+  background-color: #d1dcff;
+}
+
+body .navBar ul .modal ::-webkit-scrollbar {
+  width: 8px;
+}
+
+body .navBar ul .modal ::-webkit-scrollbar-track {
+  background: white;
+}
+
+body .navBar ul .modal ::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  padding: 3px;
+  background: #cecece;
+}
+
+body .navBar ul a {
+  color: black;
+}
+
+body .navBar ul a button {
+  margin-left: 10px;
+  cursor: pointer;
+  background-color: #5656ff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 96px;
+  height: 36px;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+body .navBar ul a button:hover {
+  background-color: #009dff;
+}
+
+body .navBar ul a button:focus {
+  outline: none;
+}
+
+body section {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-area: 2/1/3/2;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+body section [alt="Google logo"] {
+  height: 90px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+body section form #searchBox {
+  border: #bebebe solid 1px;
+  padding: 5px;
+  border-radius: 50vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: calc(100% - 16.8px - 10px) 16.8px;
+      grid-template-columns: calc(100% - 16.8px - 10px) 16.8px;
+  margin-bottom: 10px;
+  height: 44px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 90vw;
+}
+
+body section form #searchBox label {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-area: 1/1/2/2;
+  height: 40px;
+}
+
+body section form #searchBox label img {
+  height: 20px;
+  opacity: 0.4;
+  position: absolute;
+  top: 11px;
+  left: 10px;
+}
+
+body section form #searchBox label input {
+  border: none;
+  width: calc(100% - 40.8px);
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  padding: auto;
+  height: 32px;
+  width: calc(100% - 80px);
+  position: absolute;
+  left: 40px;
+  font-size: 16px;
+}
+
+body section form #searchBox label input:focus {
+  outline: none;
+}
+
+body section form #searchBox #voiceSearch {
+  height: 24px;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-area: 1/2/2/3;
+  position: absolute;
+  top: 3px;
+}
+
+body section form .button {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+body section form .button button {
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  height: 36px;
+  background-color: #f7f7f7;
+  font-size: 14px;
+  color: #313131;
+  cursor: pointer;
+}
+
+body section form .button button:hover {
+  border: lightgrey solid 1px;
+  -webkit-box-shadow: 0px 1px 1px lightgrey;
+          box-shadow: 0px 1px 1px lightgrey;
+}
+
+body section form .button button:focus {
+  outline: none;
+  border: #5151ff solid 1px;
+}
+
+body section form .button #b1 {
+  justify-self: flex-end;
+}
+
+body section form .button #b2 {
+  justify-self: flex-start;
+}
+
+body section ul {
+  font-size: 13px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 90vw;
+}
+
+body section ul li {
+  padding: 5px;
+}
+
+body section ul li a {
+  color: #0000b3;
+}
+
+body section ul li a:hover {
+  text-decoration: underline;
+}
+
+body footer {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-area: 3/1/4/2;
+  background-color: #f3f2f2;
+  color: #757575;
+}
+
+body footer div {
+  height: 46.8px;
+  padding: 1em;
+}
+
+body footer #f1 {
+  border-bottom: solid #d4d3d3 1px;
+  font-size: 15px;
+  padding-left: 2em;
+}
+
+body footer #f2 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 14px;
+}
+
+body footer #f2 ul li {
+  padding: 15px;
+}
+
+body footer #f2 ul li a {
+  color: #757575;
+}
+
+body footer #f2 ul li a:hover {
+  text-decoration: underline;
+}
+
+@-webkit-keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media all and (max-width: 700px) {
+  body {
+    -ms-grid-rows: 48px calc(100% - 68px - 140.4px) 140.4px;
+        grid-template-rows: 48px calc(100% - 68px - 140.4px) 140.4px;
+  }
+  body footer #f2 {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: 46.8px 46.8px;
+        grid-template-rows: 46.8px 46.8px;
+  }
+  body footer #f2 ul {
+    text-align: center;
+  }
+}
+
+@media all and (max-width: 400px) {
+  body footer #f1 {
+    font-size: 13px;
+  }
+  body footer #f2 {
+    font-size: 12px;
+  }
+  body footer #f2 ul li {
+    padding: 8px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
